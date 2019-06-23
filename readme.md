@@ -15,5 +15,5 @@ Urls er et krav og må være et array av lenker.
 htmlElement er hvilket html element på siden som inneholder teksten du ønsker å telle ord fra. Dette er valgfritt. 
 Default er body elementet på siden. Formen på strengen må være en selector.
 
-APIet returnerer et JSON objekt med formen {"ord": 6}, hvor taller er antall ganger ordet er i teksten.
+APIet returnerer et JSON objekt med formen {"ord": 6}, hvor tallet er antall ganger ordet er i teksten.
 
