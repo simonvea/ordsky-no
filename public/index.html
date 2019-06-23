@@ -21,9 +21,9 @@
                 e.preventDefault();
                 const data = getDataFromForm();
 
-                getWordCount(data).then(wordcount => {
+                getWordCount(data)
+                    .then(wordcount => {
                         console.log(wordcount);
-                        responseElement.textContent = wordcount;
                     })
                     .catch(err => console.error(err))
 
@@ -41,7 +41,7 @@
             }
 
             async function getWordCount(data) {
-                const url = '/count-words-on-pages';
+                const url = '/api/count-words-on-pages';
                 const init = {
                     method: "POST",
                     headers: {

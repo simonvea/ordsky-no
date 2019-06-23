@@ -6,7 +6,7 @@ Dette er backenden til ordsky.no. For frontenden se eget repo:
 
 ### Telle ord på nettsider
 
-POST requests sendes til /count-words-on-pages som returnerer antall ord på nettsidene som du ønsker å telle ordene på.
+POST requests sendes til /api/count-words-on-pages som returnerer antall ord på nettsidene som du ønsker å telle ordene på.
 
 POST requesten må sende en body med et objekt av formen: {urls: ["url1", "url2"], htmlElement: "body"}.
 
