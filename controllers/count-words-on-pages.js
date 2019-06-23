@@ -1,10 +1,10 @@
 const request = require('request-promise-native');
 const HTMLParser = require('node-html-parser');
 
-async function countWordsAtPages(urls, htmlElement = 'body') {
+async function countWordsOnPages(urls, htmlElement = 'body') {
     const pages = [];
     for (let url of urls) {
-        const words = await countWordsAtPage(url, htmlElement);
+        const words = await countWordsOnPage(url, htmlElement);
         pages.push(words);
     }
     const combinedCount = combineResultsFromEachUrl(pages)
@@ -12,7 +12,7 @@ async function countWordsAtPages(urls, htmlElement = 'body') {
     return combinedCount
 }
 
-async function countWordsAtPage(url, htmlElement = 'body') {
+async function countWordsOnPage(url, htmlElement = 'body') {
     const root = await getHTML(url);
     const mainInfo = root.querySelector(htmlElement);
     if(!mainInfo) {
@@ -57,4 +57,4 @@ function combineResultsFromEachUrl(pages) {
     return result
 }
 
-module.exports = countWordsAtPages
+module.exports = countWordsOnPages

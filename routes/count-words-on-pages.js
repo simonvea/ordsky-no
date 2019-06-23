@@ -1,5 +1,5 @@
 const express = require('express')
-const countWordsAtUrls = require('../controllers/count-words-at-urls');
+const countWordsOnPages = require('../controllers/count-words-on-pages');
 
 const route = express.Router();
 
@@ -9,7 +9,7 @@ route.post('/',
     const urls = req.body.urls;
     const htmlElement = req.body.htmlElement;
 
-    const words =  await countWordsAtUrls(urls, htmlElement)
+    const words =  await countWordsOnPages(urls, htmlElement)
 
     return res.send(words)
   })
