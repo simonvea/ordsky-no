@@ -10,7 +10,7 @@ route.post('/',
     const htmlElement = req.body.htmlElement;
 
     countWordsOnPages(urls, htmlElement).then(words => {
-      res.send(words);
+      return res.send(words);
     }).catch(next)
 
   })

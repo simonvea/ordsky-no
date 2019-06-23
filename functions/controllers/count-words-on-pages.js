@@ -4,10 +4,12 @@ const HTMLParser = require('node-html-parser');
 async function countWordsOnPages(urls, htmlElement = 'body') {
     const pages = [];
     for (let url of urls) {
-        const words = await countWordsOnPage(url, htmlElement);
+        const words = countWordsOnPage(url, htmlElement);
         pages.push(words);
     }
-    const combinedCount = combineResultsFromEachUrl(pages)
+
+    const allWords = await Promise.all(pages);
+    const combinedCount = combineResultsFromEachUrl(allWords)
 
     return combinedCount
 }
@@ -18,13 +20,13 @@ async function countWordsOnPage(url, htmlElement = 'body') {
     if(!mainInfo) {
         class noTextError extends Error {}
         throw new noTextError
-    };
+    }
     const text = mainInfo.rawText;
     const words = countWords(text);
     return words
 }
 
-async function getHTML(url) {
+async function getHTML(url) {
     const html = await request(url);
     const root = HTMLParser.parse(html);
     return root
@@ -46,8 +48,8 @@ function countWords(string) {
 }
 
 function isIterable(obj) {
-    // checks for null and undefined
-    if (obj == null) {
+
+    if (obj === null) {
         return false;
     }
     return typeof obj[Symbol.iterator] === 'function';
