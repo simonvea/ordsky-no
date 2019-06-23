@@ -34,12 +34,23 @@ function countWords(string) {
     const regExp = /\S+[^\W]/gi;
     const words = string.toLowerCase().match(regExp);
     const count = {};
+
+    if(isIterable(words)) { //checks if there are no words and throws an error if there are no words
+        for (let word of words) {
+            if(!count[word]) {count[word] = 1}
+            else {count[word]++}
+        }
+    } else {throw new Error}
     
-    for (let word of words) {
-        if(!count[word]) {count[word] = 1}
-        else {count[word]++}
-    }
     return count
+}
+
+function isIterable(obj) {
+    // checks for null and undefined
+    if (obj == null) {
+        return false;
+    }
+    return typeof obj[Symbol.iterator] === 'function';
 }
 
 function combineResultsFromEachUrl(pages) {

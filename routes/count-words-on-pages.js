@@ -5,13 +5,14 @@ const route = express.Router();
 
 route.use(express.json());
 route.post('/',
-  async (req, res, next) => {
+   (req, res, next) => {
     const urls = req.body.urls;
     const htmlElement = req.body.htmlElement;
 
-    const words =  await countWordsOnPages(urls, htmlElement)
+    countWordsOnPages(urls, htmlElement).then(words => {
+      res.send(words);
+    }).catch(next)
 
-    return res.send(words)
   })
 
 module.exports = route
