@@ -11,7 +11,8 @@
   "author": "Simon Opheim",
   "license": "ISC",
   "dependencies": {
-    "@babel/polyfill": "^7.4.4"
+    "@babel/polyfill": "^7.4.4",
+    "d3-selection": "^1.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
