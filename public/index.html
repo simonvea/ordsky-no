@@ -5,57 +5,46 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1.0, shrink-to-fit=no">
+        <link rel="stylesheet" href="./style.css" type="text/css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
-        <form>
-            <textarea id="lenker" row="3">Legg til lenke her, separer flere lenker med komma</textarea>
-            <button type="submit" id="klikk-meg">Generer ordsky</button>
-        </form>
-        <div id="word-cloud"></div>
+        <header>
+            <section class="title">
+                <h1 class="display-1">Ordsky.no</h1>
+                <h3>Der ordene trives</h3>
+            </section>
+        </header>
+        <main class="container">
+            <section class="row justify-content-center">
+                <div>
+                    <p class="lead text-center">
+                        Velkommen!
+                    </p>
+                    <p>
+                        Her kan du lage en ordsky ved å lime inn tekst, eller ved å legge inn ordene du ønsker å ha i ordskyen i den rangeringen du ønsker.
+                    </p>
+                </div>
+            </section>
+            <section class="row justify-content-center">
+                <form class="col-md-6">
+                    <div class="form-group">
+                        <label for="words" class="sr-only sr-only-focusable">Tekst:</label>
+                        <textarea id="words" class="form-control" row="4" placeholder="Lim inn tekst her"></textarea>
+                    </div>
+                    <div class="row justify-content-center">
+                        <button type="submit" class="btn btn-primary" id="klikk-meg">Generer ordsky</button>
+                    </div>
+                </form>
+            </section>
+            <section class="row justify-content-center word-cloud">
+                    <div id="word-cloud"></div>
+            </section>
+        </main>
+        <footer>
             
-        <script>
-            const form = document.querySelector('form');
-            const responseElement = document.getElementById('word-cloud');
-
-            form.addEventListener("submit", (e) => {
-                e.preventDefault();
-                const data = getDataFromForm();
-
-                getWordCount(data)
-                    .then(wordcount => {
-                        console.log(wordcount);
-                    })
-                    .catch(err => console.error(err))
-
-            });
-
-            function getDataFromForm() {
-                const linksElement = document.getElementById('lenker');
-                const rawData = linksElement.value.split(",");
-                
-                const data = {
-                    urls: rawData,
-                };
-
-                return data
-            }
-
-            async function getWordCount(data) {
-                const url = '/api/count-words-on-pages';
-                const init = {
-                    method: "POST",
-                    headers: {
-                            'Content-Type': 'application/json'
-                        },
-                    body: JSON.stringify(data)
-                }
-
-                const response = await fetch(url, init);
-                const wordcount = await response.json();
-
-                return wordcount
-            }
-        
-        </script>
+        </footer>
+        <script src="https://d3js.org/d3-selection.v1.min.js"></script>
+        <script src="./main.js" type="module"></script>
     </body>
 </html>

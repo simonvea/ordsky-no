@@ -1,0 +1,11 @@
+header, footer {
+    text-align: center;
+}
+
+main {
+    margin-top: 50px;
+}
+
+#word-cloud {
+    margin: 30px 0;
+}
