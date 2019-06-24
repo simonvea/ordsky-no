@@ -1,7 +1,7 @@
 const express = require('express');
-const addAttr = require('../controllers/add-attributes')
 const cloud = require("d3-cloud");
 const {createCanvas} = require("canvas");
+const addAttr = require('../controllers/add-attributes')
 
 const route = express.Router();
 
@@ -9,14 +9,14 @@ route.use(express.json());
 route.post('/',
    (req, res, next) => {
 
-    const words = req.body;
-    const wordsWithAttr = addAttr(words); //Each word needs to have the form: {text: "word", size: 50}
+    const words = req.body.words;
+    const svgWidth = req.body.svgWidth || 500;
+    const svgHeight = req.body.svgHeight || 500;
+    const paddingBetweenWords = req.body.padding || 5;
+    const rotationDeg = req.body.rotation || 90;
+    const font = req.body.font || "Impact";
 
-    const svgWidth = 500;
-    const svgHeight = 500;
-    const paddingBetweenWords = 5;
-    const rotationDeg = 90;
-    const font = "Impact";
+    const wordsWithAttr = addAttr(words); //Returning an array of objects with the form: {text: "word", size: 50}
     
     cloud()
       .size([svgWidth,svgHeight])

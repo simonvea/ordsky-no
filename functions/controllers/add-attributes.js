@@ -26,7 +26,7 @@ function groupWordsByCount(wordsObject) {
     for (word of words) {
         const number = wordsObject[word];
         const index = indexOfNumber(number, grouped)
-        if(index != -1) {
+        if(index !== -1) {
             grouped[index].words.push(word)
         } else {
             grouped.push({count: number, words: [word]})
@@ -36,7 +36,7 @@ function groupWordsByCount(wordsObject) {
 }
 
 function indexOfNumber(number, array) {
-    return array.findIndex(object => object.count == number)
+    return array.findIndex(object => object.count === number)
 }
 
 
