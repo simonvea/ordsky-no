@@ -1,8 +1,10 @@
-import {select} from 'd3-selection';
+import { getCloud } from './asyncfunc.js'
+import * as dom from './domfunc.js'
+
 const form = document.querySelector('form');
 const textArea = document.getElementById('words');
-const wordCloud = document.getElementById('word-cloud');
-const downloadElement = document.getElementById('download');
+const wordCloudParent = document.getElementById('word-cloud');
+const downloadParent = document.getElementById('download');
 
 
 form.addEventListener("submit", (e) => {
@@ -11,10 +13,10 @@ form.addEventListener("submit", (e) => {
     
     getCloud({words})
         .then(cloud => {
-            appendCloudToElement(cloud, wordCloud);
-            const svg = wordCloud.querySelector('svg');
+            dom.appendCloud(cloud, wordCloudParent);
+            const svg = wordCloudParent.querySelector('svg');
             const dataURL = svgDataURL(svg);
-            appendDowloadButtonToElement(dataURL, downloadElement)
+            dom.appendDowloadButton(dataURL, downloadParent)
         })
         .catch(err => console.error(err));
     form.reset();
@@ -41,48 +43,6 @@ function isIterable(obj) {
         return false;
     }
     return typeof obj[Symbol.iterator] === 'function';
-}
-
-async function getCloud(data) {
-    const url = '/api/create-cloud';
-    const init = {
-        method: "POST",
-        headers: {
-                'Content-Type': 'application/json'
-            },
-        body: JSON.stringify(data)
-    }
-
-    const response = await fetch(url, init);
-    const cloud = await response.json();
-
-    return cloud
-}
-
-function appendCloudToElement(cloud, element) {
-
-    //removes previous cloud
-    if(element.firstChild) {element.removeChild(element.firstChild)}
-
-    select(element).append("svg")
-        .attr("width", 500) //layout.size()[0]
-        .attr("height", 500) //layout.size()[1]
-        .append("g")
-        .attr("transform", "translate(" + 500 / 2 + "," + 500 / 2 + ")")
-        .selectAll("text")
-        .data(cloud)
-        .enter().append("text")
-        .style("font-size", (d) => d.size + "px")
-        .style("font-family", "Impact")
-        .style("fill", (d) => d.fill)
-        .attr("text-anchor", "middle")
-        .attr("transform", (d) => "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")")
-        .text((d) => d.text);
-}
-
-function appendDowloadButtonToElement(dataURL, element){
-    const html = `<a href="${dataURL}" download="ordsky" class="btn btn-secondary" role="button" id="download-btn">Last ned som svg</a>`
-    element.innerHTML = html
 }
 
 function svgDataURL(svg) {
