@@ -1,15 +1,21 @@
 import {select} from 'd3-selection';
 const form = document.querySelector('form');
 const textArea = document.getElementById('words');
-const wordCloud = document.getElementById('word-cloud')
+const wordCloud = document.getElementById('word-cloud');
+const downloadElement = document.getElementById('download');
 
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const words = countWords(textArea.value);
     
-    getCloud(words)
-        .then(cloud => appendCloudToElement(cloud, wordCloud))
+    getCloud({words})
+        .then(cloud => {
+            appendCloudToElement(cloud, wordCloud);
+            const svg = wordCloud.querySelector('svg');
+            const dataURL = svgDataURL(svg);
+            appendDowloadButtonToElement(dataURL, downloadElement)
+        })
         .catch(err => console.error(err));
     form.reset();
 })
@@ -55,7 +61,8 @@ async function getCloud(data) {
 
 function appendCloudToElement(cloud, element) {
 
-    if(element.firstChild) {element.removeChild(element.firstChild);}
+    //removes previous cloud
+    if(element.firstChild) {element.removeChild(element.firstChild)}
 
     select(element).append("svg")
         .attr("width", 500) //layout.size()[0]
@@ -71,4 +78,14 @@ function appendCloudToElement(cloud, element) {
         .attr("text-anchor", "middle")
         .attr("transform", (d) => "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")")
         .text((d) => d.text);
+}
+
+function appendDowloadButtonToElement(dataURL, element){
+    const html = `<a href="${dataURL}" download="ordsky" class="btn btn-secondary" role="button" id="download-btn">Last ned som svg</a>`
+    element.innerHTML = html
+}
+
+function svgDataURL(svg) {
+    const svgAsXML = (new XMLSerializer).serializeToString(svg);
+    return "data:image/svg+xml," + encodeURIComponent(svgAsXML);
 }

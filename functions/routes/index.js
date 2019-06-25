@@ -13,7 +13,7 @@ router.post('/api/create-cloud',
 
 router.use((err, req, res, next) => {
     if (err.message === "Bad Request") {
-        res.status(400).send('Bad Request.')
+        res.status(400).send('Bad Request')
     }
     next(err)
 })

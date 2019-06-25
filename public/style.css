@@ -6,6 +6,10 @@ main {
     margin-top: 50px;
 }
 
+footer {
+    height: 200px;
+}
+
 #word-cloud {
     margin: 30px 0;
 }
