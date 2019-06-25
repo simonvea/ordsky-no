@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
     const words = req.body.words;
     const svgWidth = req.body.svgWidth || 500;
     const svgHeight = req.body.svgHeight || 500;
-    const paddingBetweenWords = req.body.padding || 5;
+    const paddingBetweenWords = req.body.padding || 7;
     const rotationDeg = req.body.rotation || 90;
     const font = req.body.font || "Impact";
 
