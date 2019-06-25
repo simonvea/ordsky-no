@@ -25,3 +25,16 @@ export function appendDowloadButton(dataURL, element){
     const html = `<a href="${dataURL}" download="ordsky" class="btn btn-secondary btn-sm" role="button" id="download-btn">Last ned som svg</a>`
     element.innerHTML = html
 }
+
+export function addLoading(element) {
+    element.disabled = true;
+    const html  =`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Lager ordsky...
+    `
+    element.innerHTML = html
+}
+
+export function removeLoading(element) {
+    element.innerHTML = "Generer ordsky"
+    element.disabled = false;
+}

@@ -10,7 +10,8 @@ const downloadParent = document.getElementById('download');
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    submitButton.disabled = true;
+    
+    dom.addLoading(submitButton);
     const words = countWords(textArea.value);
     
     getCloud({words})
@@ -19,10 +20,10 @@ form.addEventListener("submit", (e) => {
             const svg = wordCloudParent.querySelector('svg');
             const dataURL = svgDataURL(svg);
             dom.appendDowloadButton(dataURL, downloadParent);
-            submitButton.disabled = false;
+            dom.removeLoading(submitButton);
         })
         .catch(err => console.error(err));
-    form.reset();
+    //form.reset();
 })
 
 function countWords(string) {
@@ -53,3 +54,4 @@ function svgDataURL(svg) {
     const svgAsXML = (new XMLSerializer).serializeToString(svg);
     return "data:image/svg+xml," + encodeURIComponent(svgAsXML);
 }
+
