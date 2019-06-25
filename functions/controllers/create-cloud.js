@@ -1,13 +1,8 @@
-const express = require('express');
 const cloud = require("d3-cloud");
 const {createCanvas} = require("canvas");
-const addAttr = require('../controllers/add-attributes')
+const addAttr = require('../services/add-attributes');
 
-const route = express.Router();
-
-route.use(express.json());
-route.post('/',
-   (req, res, next) => {
+module.exports = (req, res, next) => {
 
     const words = req.body.words;
     const svgWidth = req.body.svgWidth || 500;
@@ -28,6 +23,4 @@ route.post('/',
       .fontSize(d => d.size)
       .on("end", wordsFinished => res.send(JSON.stringify(wordsFinished)))
       .start();
-  })
-
-module.exports = route
+  }

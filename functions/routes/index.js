@@ -1,9 +1,14 @@
+const express = require('express')
+const router = express.Router();
+const validateRequest = require('../middleware/validateRequest');
+const createCloud = require('../controllers/create-cloud')
 
-const Router = require('express').Router();
+//NB! All routes are dependent on config in firebase.json, under rewrites.
 
-//NB! All routes need to start with /api/ or else you need to change it in firebase.json
+router.use(express.json())
+router.post('/api/create-cloud', 
+    validateRequest,
+    createCloud
+    )
 
-Router.use('/api/count-words-on-pages', require('./count-words-on-pages'));
-Router.use('/api/create-cloud', require('./create-cloud'));
-
-module.exports = Router
+module.exports = router
