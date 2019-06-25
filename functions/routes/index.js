@@ -1,7 +1,7 @@
 const express = require('express')
-const router = express.Router();
 const validateRequest = require('../middleware/validateRequest');
-const createCloud = require('../controllers/create-cloud')
+const createCloud = require('../controllers/create-cloud');
+const router = express.Router();
 
 //NB! All routes are dependent on config in firebase.json, under rewrites.
 

@@ -1,9 +1,9 @@
 const path = require('path');
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: ['@babel/polyfill','./src/main.js' ],
-  devtool: 'inline-source-map', //remove for production
+  //devtool: 'inline-source-map', //remove for production
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'main.js'
