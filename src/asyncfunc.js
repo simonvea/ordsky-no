@@ -1,5 +1,5 @@
 export async function getCloud(data) {
-    const url = '/api/create-cloud';
+    const url = '/api/create-cloud'
     const init = {
         method: "POST",
         headers: {

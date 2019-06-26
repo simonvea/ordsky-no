@@ -1,5 +1,6 @@
 import { getCloud } from './asyncfunc.js'
 import * as dom from './domfunc.js'
+import { transformList } from './formfunc.js'
 
 const form = document.querySelector('form');
 const submitButton = document.getElementById('klikk-meg');
@@ -12,7 +13,15 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     
     dom.addLoading(submitButton);
-    const words = countWords(textArea.value);
+    let words = textArea.value;
+    if(form.tekst.checked) {
+        words = countWords(words);
+    } else if (form.liste.checked) {
+        words = transformList(words)
+    } else {
+        return
+    }
+    
     
     getCloud({words})
         .then(cloud => {

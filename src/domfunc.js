@@ -22,7 +22,7 @@ export function appendCloud(cloud, element) {
 }
 
 export function appendDowloadButton(dataURL, element){
-    const html = `<a href="${dataURL}" download="ordsky" class="btn btn-secondary btn-sm" role="button" id="download-btn">Last ned som svg</a>`
+    const html = `<a href="${dataURL}" download="ordsky" class="btn btn-secondary btn-sm" role="button" id="download-btn">Last ned ordsky</a>`
     element.innerHTML = html
 }
 

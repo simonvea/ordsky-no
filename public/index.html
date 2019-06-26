@@ -17,23 +17,43 @@
         </header>
         <main class="container">
             <section class="row justify-content-center">
-                <div class="container">
-                    <p class="lead text-center">
+                <div class="container text-center">
+                    <p class="lead">
                         Velkommen!
                     </p>
-                    <p class="text-center">
-                        Her kan du lage en ordsky ved å lime inn tekst.
+                    <p>
+                        Her kan du lage en ordsky ved å lime inn tekst. Eller så kan du legge inn en egen liste.
                     </p>
-                    <p class="text-center">
-                        Størrelsen på ordene i ordskyen blir bestemt av hvor ofte de forekommer i teksten. Fargen er tilfeldig.
+                    <p>
+                        Størrelsen på ordene i ordskyen blir bestemt av hvor ofte de forekommer i teksten i forhold til de andre ordene i teksten. 
+                        Hvis du legger inn en egen liste er størrelsen på ordene bestemt av forholdet til tallene til de andre ordene i listen.
+                        Fargen er tilfeldig.
+                    </p>
+                    <p>
+                    <img src="./assets/liste.png" alt="bilde av en (ord,tall\n)-liste" class="img-thumbnail list-img">
                     </p>
                 </div>
             </section>
+
             <section class="row justify-content-center">
                 <form class="col-md-6">
                     <div class="form-group">
                         <label for="words" class="sr-only sr-only-focusable">Tekst:</label>
                         <textarea id="words" class="form-control" row="4" placeholder="Lim inn tekst her"></textarea>
+                        <div clas="d-flex justify-content-center">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="tekst" value="tekst">
+                            <label class="form-check-label" for="tekst">Tekst</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="liste" value="liste">
+                            <label class="form-check-label" for="liste">Liste</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="web" value="web" disabled>
+                            <label class="form-check-label" for="web">Url</label>
+                        </div>
+                    </div>
                     </div>
                     <div class="row justify-content-center">
                         <button type="submit" class="btn btn-primary" id="klikk-meg">Generer ordsky</button>
