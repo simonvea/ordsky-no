@@ -8,6 +8,6 @@ const staticFolder = '../public'
 
 app.use(express.static(staticFolder));
 
-app.use(routes)
+app.use('/api', routes)
 
 app.listen(port, () => console.log(`Listening on port ${port}!`))

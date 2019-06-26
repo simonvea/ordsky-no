@@ -5,29 +5,22 @@ const createCloud = require('../controllers/create-cloud');
 
 const router = express.Router();
 
-//NB! All routes are dependent on config in firebase.json, under rewrites.
+//NB! All routes are dependent on config in firebase.json, under rewrites. Currently it is set as calls to /api in main index.js file.
 
 router.use(express.json())
-router.post('/api/create-cloud', 
+router.post('/create-cloud', 
     validateRequest,
     createCloud
     )
 
-// router.post('/api/count-words',
+// router.post('/count-words',
 //     validateRequest,
 //     countWords
 //     )
 
-// router.post('api/count-words-web',
+// router.post('/count-words-web',
 //     //validateRequest,
 //     countWordsWeb
 // )
-
-router.use((err, req, res, next) => {
-    if (err.message === "Bad Request") {
-        res.status(400).send('Bad Request')
-    }
-    next(err)
-})
 
 module.exports = router
