@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
-    "d3-selection": "^1.4.0"
+    "d3-selection": "^1.4.0",
+    "normalize.css": "^8.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

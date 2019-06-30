@@ -1,5 +1,4 @@
-const express = require('express')
-const countWordsOnPages = require('./count-words-on-pages');
+const countWordsOnPages = require('../services/count-words-web');
 
 
 module.exports = (req, res, next) => {
@@ -9,5 +8,4 @@ module.exports = (req, res, next) => {
   countWordsOnPages(urls, htmlElement).then(words => {
     return res.send(words);
   }).catch(next)
-
 }

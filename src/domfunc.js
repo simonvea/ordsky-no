@@ -28,7 +28,7 @@ export function appendDowloadButton(dataURL, element){
 
 export function addLoading(element) {
     element.disabled = true;
-    const html  =`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    const html  =`<span class="loader"></span>
     Lager ordsky...
     `
     element.innerHTML = html

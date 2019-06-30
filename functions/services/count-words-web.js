@@ -18,8 +18,7 @@ async function countWordsOnPage(url, htmlElement = 'body') {
     const root = await getHTML(url);
     const mainInfo = root.querySelector(htmlElement);
     if(!mainInfo) {
-        class noTextError extends Error {}
-        throw new noTextError
+        throw new Error("no text on page")
     }
     const text = mainInfo.rawText;
     const words = countWords(text);

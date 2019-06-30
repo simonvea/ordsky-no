@@ -7,6 +7,8 @@ const submitButton = document.getElementById('klikk-meg');
 const textArea = document.getElementById('words');
 const wordCloudParent = document.getElementById('word-cloud');
 const downloadParent = document.getElementById('download');
+const listImg = document.querySelector(".list-img");
+const formType = window.location.search.match(/\w+/g).join("");
 
 
 form.addEventListener("submit", (e) => {
@@ -14,26 +16,35 @@ form.addEventListener("submit", (e) => {
     
     dom.addLoading(submitButton);
     let words = textArea.value;
-    if(form.tekst.checked) {
+    if(formType === "tekst") {
         words = countWords(words);
-    } else if (form.liste.checked) {
+    } else if (formType === "liste") {
         words = transformList(words)
     } else {
+        dom.removeLoading(submitButton);
         return
     }
     
     
-    getCloud({words})
-        .then(cloud => {
-            dom.appendCloud(cloud, wordCloudParent);
-            const svg = wordCloudParent.querySelector('svg');
-            const dataURL = svgDataURL(svg);
-            dom.appendDowloadButton(dataURL, downloadParent);
-            dom.removeLoading(submitButton);
-        })
-        .catch(err => console.error(err));
+    // getCloud({words})
+    //     .then(cloud => {
+    //         dom.appendCloud(cloud, wordCloudParent);
+    //         const svg = wordCloudParent.querySelector('svg');
+    //         const dataURL = svgDataURL(svg);
+    //         dom.appendDowloadButton(dataURL, downloadParent);
+    //         dom.removeLoading(submitButton);
+    //     })
+    //     .catch(err => console.error(err));
     //form.reset();
 })
+
+function toggleImgActive() {
+    if(form.liste.checked) {
+        listImg.classList.add('active');
+    } else {
+        listImg.classList.remove('active');
+    } 
+}
 
 function countWords(string) {
     const regExp = /\S+/gi;
