@@ -9,7 +9,7 @@ function countWords(string) {
           if(!count[word]) {count[word] = 1}
           else {count[word]++}
       }
-  } else {throw new Error('No words')}
+  } else {throw new Error('NO WORDS')}
   
   return count
 }

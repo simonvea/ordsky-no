@@ -1,14 +1,18 @@
 const countWords = require('../utils/count-words')
 
-
 module.exports = (req, res, next) => {
   const text = req.body.text
   const type = req.body.type || 'text'
 
-  if(!text) return next('NO TEXT')
+  // lagre i database, gjerne kombinert ordtelling og request
 
-  const countedWords = countWords(text);
-  // lagre i database
+  if(type === 'text') {
+    if(!text) return next('NO TEXT')
 
-  return res.json(countedWords)
+    const countedWords = countWords(text);
+
+    return res.json(countedWords)
+  } 
+
+  return next()
 }

@@ -1,0 +1,24 @@
+POST http://localhost:3000/api/cloud
+Content-Type: application/json
+
+{
+  "words": {
+    "this": 1,
+    "is": 1,
+    "a": 2,
+    "somewhat": 1,
+    "long": 1,
+    "text": 1,
+    "with": 1,
+    "more": 1,
+    "than": 1,
+    "one": 1,
+    "word": 1,
+    "where": 1,
+    "there": 1,
+    "are": 1,
+    "two": 2,
+    "and": 1,
+    "twos": 1
+  }
+}

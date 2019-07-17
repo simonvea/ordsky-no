@@ -1,0 +1,7 @@
+POST http://localhost:3000/api/words
+Content-Type: application/json
+
+{
+  "urls": ["https://www.nrk.no/urix/skogbranner-i-alaska-og-sibir-forer-til-enorme-co_-utslipp-1.14625340"],
+  "type": "web"
+}
