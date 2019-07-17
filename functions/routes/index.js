@@ -10,7 +10,8 @@ const router = express.Router();
 
 router.use(express.json());
 router.post('/cloud', cloudController);
-router.post('/words', wordsController, webController);
+router.post('/words', wordsController);
+router.post('/web', webController)
 router.use(errHandler);
 
 module.exports = router

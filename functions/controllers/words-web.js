@@ -1,12 +1,12 @@
 const countWordsOnPages = require('../utils/count-words-web');
 
 module.exports = (req, res, next) => {
-  const type = req.body.type.toLowerCase();
-  const urls = req.body.urls;
+  const urlsRaw = req.body.urls;
   const htmlElement = req.body.htmlElement || 'body';
 
-  if(!type || type !== 'web') return next('NO TYPE')
-  if(!urls) return next('NO URLS')
+  if(!urlsRaw) return next('NO URLS')
+
+  const urls = urlsRaw.map(url => String(url));
 
   countWordsOnPages(urls, htmlElement)
     .then(words => {
