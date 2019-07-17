@@ -1,4 +1,4 @@
-const countWordsOnPages = require('../services/count-words-web');
+const countWordsOnPages = require('../utils/count-words-web');
 
 
 module.exports = (req, res, next) => {

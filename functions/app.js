@@ -6,8 +6,6 @@ const port = 3000;
 
 const staticFolder = '../public'
 
-app.set('view engine', 'pug');
-
 app.use(express.static(staticFolder));
 
 app.use('/api', routes)

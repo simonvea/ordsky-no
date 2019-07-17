@@ -1,6 +1,6 @@
 const cloud = require("d3-cloud");
-const {createCanvas} = require("canvas");
-const addAttr = require('../services/add-attributes');
+const { createCanvas } = require("canvas");
+const addAttr = require('../utils/add-attributes');
 
 module.exports = (req, res, next) => {
 
