@@ -1,7 +1,6 @@
-POST http://localhost:3000/api/words
+POST http://localhost:5000/ordsky-41e2e/us-central1/app/api/words
 Content-Type: application/json
 
 {
-  "text": "this is a somewhat long text with more than one word, where there are two a and two twos",
-  "type": "text"
+  "text": "this is a somewhat long text with more than one word, where there are two a and two twos"
 }

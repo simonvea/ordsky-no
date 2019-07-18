@@ -1,0 +1,83 @@
+[debug] [2019-07-18T09:12:15.981Z] ----------------------------------------------------------------------
+[debug] [2019-07-18T09:12:15.985Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only functions
+[debug] [2019-07-18T09:12:15.985Z] CLI Version:   7.0.1
+[debug] [2019-07-18T09:12:15.985Z] Platform:      darwin
+[debug] [2019-07-18T09:12:15.985Z] Node Version:  v10.15.3
+[debug] [2019-07-18T09:12:15.987Z] Time:          Thu Jul 18 2019 11:12:15 GMT+0200 (GMT+02:00)
+[debug] [2019-07-18T09:12:15.987Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-18T09:12:16.002Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-18T09:12:16.003Z] > authorizing via signed-in user
+[debug] [2019-07-18T09:12:16.003Z] [iam] checking project ordsky-41e2e for permissions ["firebase.projects.get"]
+[debug] [2019-07-18T09:12:16.005Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-07-18T09:12:16.005Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-07-18T09:12:16.186Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-18T09:12:16.201Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/ordsky-41e2e:testIamPermissions  
+
+[debug] [2019-07-18T09:12:17.108Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-18T09:12:17.111Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/ordsky-41e2e  
+ 
+[debug] [2019-07-18T09:12:18.035Z] <<< HTTP RESPONSE 200
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "10"
+[debug] [2019-07-18T09:12:18.050Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/815660490211:getServerAppConfig  
+ 
+[debug] [2019-07-18T09:12:18.268Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: Emulator started at http://localhost:5000
+[info] i  functions: Watching "/Users/Simon/Webutvikling/Portefølje/ordsky/functions" for Cloud Functions...
+[debug] [2019-07-18T09:12:18.743Z] Functions runtime initialized.
+[debug] [2019-07-18T09:12:18.744Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-18T09:12:18.878Z] firebase-admin has been stubbed.
+[warn] ⚠  TypeError: admin.firebase is not a function
+    at Object.<anonymous> (/Users/Simon/Webutvikling/Portefølje/ordsky/functions/models/words.js:5:18)
+    at Module._compile (internal/modules/cjs/loader.js:701:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:712:10)
+    at Module.load (internal/modules/cjs/loader.js:600:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:539:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:531:3)
+    at Module.require (internal/modules/cjs/loader.js:637:17)
+    at require (internal/modules/cjs/helpers.js:22:18)
+    at Object.<anonymous> (/Users/Simon/Webutvikling/Portefølje/ordsky/functions/controllers/words.js:2:25)
+    at Module._compile (internal/modules/cjs/loader.js:701:30)
+[warn] ⚠  We were unable to load your functions code. (see above)
+[debug] [2019-07-18T09:12:49.599Z] File /Users/Simon/Webutvikling/Portefølje/ordsky/functions/models/words.js changed, reloading triggers
+[debug] [2019-07-18T09:12:51.258Z] Functions runtime initialized.
+[debug] [2019-07-18T09:12:51.259Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-18T09:12:51.416Z] firebase-admin has been stubbed.
+[info] i  functions: HTTP trigger initialized at http://localhost:5000/ordsky-41e2e/us-central1/app
+[debug] [2019-07-18T09:12:58.072Z] Accepted request POST /ordsky-41e2e/us-central1/app/api/words --> app
+[debug] [2019-07-18T09:12:58.462Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-07-18T09:12:58.464Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-18T09:12:58.554Z] firebase-admin has been stubbed.
+[debug] [2019-07-18T09:12:59.010Z] Trigger "app" has been found, beginning invocation!
+[debug] [2019-07-18T09:12:59.011Z] 
+[debug] [2019-07-18T09:12:59.011Z] Running app in mode HTTPS
+[debug] [2019-07-18T09:12:59.021Z] {"socketPath":"/var/folders/br/k8503ryx06n12qx9sc9s6dp40000gn/T/firebase_emulator_invocation_69672.sock"}
+[debug] [2019-07-18T09:12:59.022Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/br/k8503ryx06n12qx9sc9s6dp40000gn/T/firebase_emulator_invocation_69672.sock"}
+[debug] [2019-07-18T09:12:59.065Z] Ephemeral server used!
+[debug] [2019-07-18T09:12:59.067Z] Body{
+  "text": "this is a somewhat long text with more than one word, where there are two a and two twos"
+}
+[debug] [2019-07-18T09:12:59.081Z] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
+[debug] [2019-07-18T09:15:40.324Z] File /Users/Simon/Webutvikling/Portefølje/ordsky/functions/controllers/words.js changed, reloading triggers
+[debug] [2019-07-18T09:15:42.107Z] Functions runtime initialized.
+[debug] [2019-07-18T09:15:42.108Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-18T09:15:42.266Z] firebase-admin has been stubbed.
+[debug] [2019-07-18T09:15:45.625Z] Accepted request POST /ordsky-41e2e/us-central1/app/api/words --> app
+[debug] [2019-07-18T09:15:46.092Z] Functions runtime initialized.
+[info] i  functions: Beginning execution of "app"
+[debug] [2019-07-18T09:15:46.094Z] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[debug] [2019-07-18T09:15:46.224Z] firebase-admin has been stubbed.
+[debug] [2019-07-18T09:15:46.851Z] Trigger "app" has been found, beginning invocation!
+[debug] [2019-07-18T09:15:46.851Z] 
+[debug] [2019-07-18T09:15:46.852Z] Running app in mode HTTPS
+[debug] [2019-07-18T09:15:46.862Z] {"socketPath":"/var/folders/br/k8503ryx06n12qx9sc9s6dp40000gn/T/firebase_emulator_invocation_69692.sock"}
+[debug] [2019-07-18T09:15:46.865Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/br/k8503ryx06n12qx9sc9s6dp40000gn/T/firebase_emulator_invocation_69692.sock"}
+[debug] [2019-07-18T09:15:46.901Z] Ephemeral server used!
+[debug] [2019-07-18T09:15:46.903Z] Body{
+  "text": "this is a somewhat long text with more than one word, where there are two a and two twos"
+}
+[debug] [2019-07-18T09:15:46.916Z] Ephemeral server survived.
+[info] i  functions: Finished "app" in ~1s
