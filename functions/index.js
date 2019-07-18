@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config(); for local testing only
 const functions = require('firebase-functions');
 const express = require('express');
 const routes = require('./routes');

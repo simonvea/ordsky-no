@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "public/build",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -9,7 +9,12 @@
     "rewrites": [{
       "source": "/api/**",
       "function": "app"
-    }]
+    },
+    {
+      "source": "**",
+      "destination": "/index.html"
+    }
+  ]
   },
   "functions": {
     "predeploy": [
