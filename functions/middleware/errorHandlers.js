@@ -1,19 +1,22 @@
-
 function errorHandler(err, req, res, next) {
-  if(err === 'NO TEXT') {
-    return res.status(400).send({err: 'missing text'});
+  if (err === 'NO TEXT') {
+    return res.status(400).send({ err: 'missing text' });
   }
 
-  if(err === 'NO WORDS' || err.message === 'NO WORDS') {
+  if (err === 'NO WORDS' || err.message === 'NO WORDS') {
     return res.status(400).send({ err: 'missing words' });
   }
 
-  if(err === 'NO TYPE') {
+  if (err === 'NO TYPE') {
     return res.status(400).send({ err: 'missing type' });
   }
 
-  if(err === 'NO URLS') {
+  if (err === 'NO URLS') {
     return res.status(400).send({ err: 'missing urls' });
+  }
+
+  if (err === 'NO DATA') {
+    return res.status(400).send({ err: 'missing data' });
   }
 
   if (err.message === 'NO TEXT') {
@@ -23,4 +26,4 @@ function errorHandler(err, req, res, next) {
   return next(err);
 }
 
-module.exports = errorHandler
+module.exports = errorHandler;

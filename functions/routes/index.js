@@ -11,7 +11,8 @@ const router = express.Router();
 router.use(express.json());
 router.post('/cloud', cloudController);
 router.post('/words', wordsController);
-router.post('/web', webController)
+router.post('/web', webController);
+router.post('/analytics');
 router.use(errHandler);
 
-module.exports = router
+module.exports = router;
