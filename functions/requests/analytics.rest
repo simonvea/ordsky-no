@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/analytics
+Content-Type: application/json
+
+{
+  "data": {
+    "data": "agasg asgasd gas dga sg",
+    "type": "text"
+  }
+}
