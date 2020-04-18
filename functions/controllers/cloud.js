@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
   const svgWidth = config.svgWidth || 500;
   const svgHeight = config.svgHeight || 300;
   const paddingBetweenWords = config.padding || 2;
-  const rotationDeg = config.rotation || (~~(Math.random() * 6) - 3) * 30; // ~~(Math.random() * 4) * 45 - 45
+  const rotationDeg = config.rotation || 0; //~~(Math.random() * 2) * 90; //(~~(Math.random() * 6) - 3) * 30
   const font = config.font || 'Impact';
 
   const wordsWithAttr = wordCountToCloudInput(words);
@@ -20,9 +20,10 @@ module.exports = (req, res, next) => {
     .canvas(() => createCanvas(svgWidth, svgHeight))
     .words(wordsWithAttr)
     .padding(paddingBetweenWords)
-    // .rotate(() => rotationDeg)
+    .rotate(() => rotationDeg)
     .font(font)
     .fontSize((d) => d.size)
+    .spiral('rectangular')
     .on('end', (wordsFinished) => res.send(JSON.stringify(wordsFinished)))
     .start();
 };
