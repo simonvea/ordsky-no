@@ -1,7 +1,7 @@
 function countWords(string) {
   const regExp = /\S+/gi;
   const wordsRaw = string.toLowerCase().match(regExp);
-  let words = wordsRaw
+  const words = wordsRaw
     .map((word) =>
       word
         .replace(/[.,/#!$%^&*;:{}=_`'´~()?+]/g, '')

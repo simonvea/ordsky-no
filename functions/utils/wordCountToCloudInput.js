@@ -1,28 +1,52 @@
 const getRandomColor = require('randomcolor');
 
+const MAX_ARRAY_SIZE = 100;
+
 const wordCountToCloudInput = (wordCount) => {
-  const cloudInput = wordCount.map((word) => ({
-    text: word.text.toUpperCase(),
-    size: word.count,
-    fill: getRandomColor(),
-  }));
-  const normalizedSizes = normalizeSizes(cloudInput);
-  return normalizedSizes.sort((a, b) => b.size - a.size);
+  if (wordCount[0] < wordCount[wordCount.length - 1]) {
+    throw new Error('Expected a sorted array!');
+  }
+
+  wordCount.length = MAX_ARRAY_SIZE;
+
+  let maxValue = -Infinity;
+  let minValue = Infinity;
+
+  const cloudInput = wordCount.map((word) => {
+    if (word.count > maxValue) maxValue = word.count;
+    if (word.count < minValue) minValue = word.count;
+
+    return {
+      text: word.text.toUpperCase(),
+      size: word.count,
+      fill: getRandomColor(),
+    };
+  });
+
+  const normalizedSizes = normalizeSizes({
+    words: cloudInput,
+    currentMax: maxValue,
+    currentMin: minValue,
+  });
+
+  return normalizedSizes;
 };
 
-function normalizeSizes(words, minSize = 20, maxSize = 70) {
-  const sizes = words.map((word) => {
-    return Number.isNaN(word.size) ? 1 : word.size;
-  });
-  const max = Math.max(...sizes);
-  const min = Math.min(...sizes);
+function normalizeSizes({
+  words,
+  currentMax,
+  currentMin,
+  absoluteMax = 70,
+  absoluteMin = 20,
+}) {
   const normalize = (size) => {
-    const normalized = ((size - min) / (max - min)) * maxSize;
-    return normalized > minSize ? normalized : minSize;
+    const normalized =
+      ((size - currentMin) / (currentMax - currentMin)) * absoluteMax;
+    return normalized > absoluteMin ? normalized : absoluteMin;
   };
-  return words.map((word, index) => ({
+  return words.map((word) => ({
     ...word,
-    size: normalize(sizes[index]),
+    size: normalize(word.size),
   }));
 }
 
