@@ -7,7 +7,9 @@ const wordCountToCloudInput = (wordCount) => {
     throw new Error('Expected a sorted array!');
   }
 
-  wordCount.length = MAX_ARRAY_SIZE;
+  if (wordCount.length > MAX_ARRAY_SIZE) {
+    wordCount.length = MAX_ARRAY_SIZE;
+  }
 
   let maxValue = -Infinity;
   let minValue = Infinity;
