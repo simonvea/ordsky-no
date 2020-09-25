@@ -1,6 +1,6 @@
 const getRandomColor = require('randomcolor');
 
-const MAX_ARRAY_SIZE = 100;
+const MAX_ARRAY_SIZE = 50;
 
 const wordCountToCloudInput = (wordCount) => {
   if (wordCount[0] < wordCount[wordCount.length - 1]) {
